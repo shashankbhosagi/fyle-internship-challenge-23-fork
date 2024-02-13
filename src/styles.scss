@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
+    font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,4 +16,16 @@
     * {
         overflow: visible;
     }
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #7172fd, #eb0e0e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.error-input {
+    border-color: #af062f;
+    background: linear-gradient(102.95deg, rgba(239, 88, 124, .37) -.37%, rgba(129, 65, 135, .37) 104.38%);
 }

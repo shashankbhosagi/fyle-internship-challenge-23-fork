@@ -1,10 +1,44 @@
 <div
-  class="w-custom max-w-[800px] h-[52%] max-sm:h-[60%] border border-white flex flex-col z-50 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]"
+  class="w-custom max-w-[800px] h-[52%] max-sm:h-[70%] flex flex-col z-50 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]"
 >
-  <div class="flex-1 border-b-[0.0005rem] border-white h-[10%] p-2">
-    Content for the top box
+  <div
+    class="flex-1 border-b-[0.00005rem] border-[#ffffff1a] bg-[#ffffff08] rounded-t-lg h-[11%] pl-3 pt-2 font-bold"
+  >
+    <div class="text-lg text-sky-300">#Git-Repos</div>
   </div>
-  <div class="flex flex-row h-[90%] p-2">content for bottom box</div>
+  <div class="flex flex-col space-y-14 h-[89%] p-7">
+    <div class="flex flex-col space-y-8">
+      <h1 class="text-5xl font-bold text-white">Welcome to Git-Repos</h1>
+      <div class="text-base text-gray-300">
+        Get a user's GitHub profile and their repositories on Git-Repos. <br />
+        Type your github username to get started !
+      </div>
+    </div>
+    <div>
+      <form class="flex flex-row w-full max-sm:flex-col max-sm:space-y-4">
+        <!-- for werror input class error-input -->
+        <input
+          class="bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[56px] w-[78%] text-white placeholder-gray-500 rounded-tr-none rounded-br-none pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
+          name="title"
+          placeholder="Your GitHub Username (e.g. shashankbhosagi)"
+          value=""
+        />
+        <!-- <input
+        class="bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] focus:border-[#fff] flex items-center h-[56px] w-[80%] text-white rounded-tr-none rounded-br-none pl-4 font-bold text-lg"
+        name="title"
+        placeholder="Your GitHub Username (e.g. shashankbhosagi)"
+        value=""
+      /> -->
+        <button
+          type="submit"
+          class="cursor-pointer h-[56px] bg-[#484a5b] pt-3 pb-2 border border-[#777a94] rounded-lg rounded-tl-none rounded-bl-none text-white w-[22%] text-lg font-bold max-sm:w-full max-sm:rounded-lg"
+        >
+          Search
+        </button>
+      </form>
+      <!-- <div class="pt-4 text-white font-bold">❌ Incorrect Username!</div> -->
+    </div>
+  </div>
 </div>
 
 <!-- TO show repositories will assign a variable here ahe display none or block will be done -->
