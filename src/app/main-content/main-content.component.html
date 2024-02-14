@@ -1,9 +1,9 @@
 <app-landing-page *ngIf="!btnClicked" (usernameEntered)="handleUsername($event)" [userExist]="userExist"
   [emptyUsername]="emptyUsername"
-  class="w-custom max-w-[800px] h-[52%] max-sm:h-[70%] flex flex-col z-50 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]">
+  class="w-custom max-w-[800px] h-[52%] min-h-[426px] max-sm:h-[50%] flex flex-col z-50 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]">
   ></app-landing-page>
 <div *ngIf="btnClicked"
-  class="w-custom max-w-[1100px] h-5/6 flex flex-col z-50 max-sm:h-full max-sm:mt-12 rounded-md backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]">
+  class="w-custom max-w-[1100px] min-h-[682px] flex flex-col z-50 max-sm:h-full max-sm:mt-12 rounded-md backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]">
   <!--? *********************************** Top Title #Git-Repos *********************************** -->
   <div
     class="flex-1 border-b-[0.00005rem] border-[#ffffff1a] bg-[#ffffff08] rounded-t-lg h-[8%] max-sm:h-[4%] pl-3 pt-3 max-sm:pt-4 max-sm:pl-4 font-bold">
