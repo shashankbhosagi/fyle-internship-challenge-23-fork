@@ -25,6 +25,39 @@ export class MainContentComponent {
 
   constructor(private apiService: ApiService) {}
 
+  private apiCallsCache: { [key: string]: any } = {};
+
+  private isapiCallCached(
+    username: string,
+    page: number,
+    reposPerPage: number
+  ): boolean {
+    return (
+      this.apiCallsCache[
+        `${username}-page${page}-repoperpage${reposPerPage}`
+      ] !== undefined
+    );
+  }
+
+  private getCachedApiCall(
+    username: string,
+    page: number,
+    reposPerPage: number
+  ) {
+    return this.apiCallsCache[
+      `${username}-page${page}-repoperpage${reposPerPage}`
+    ];
+  }
+
+  private setCacheApiCall(
+    username: string,
+    page: number,
+    reposPerPage: number
+  ) {
+    this.apiCallsCache[`${username}-page${page}-repoperpage${reposPerPage}`] =
+      this.repos;
+  }
+
   searchRepos() {
     if (this.username && this.username.trim() !== '') {
       this.isLoading = true;
@@ -52,22 +85,35 @@ export class MainContentComponent {
     }
   }
 
-  loadRepos() {
-    this.apiService
-      .getRepos(this.username, this.currentPage, this.reposPerPage)
-      .subscribe({
-        next: (repos: any) => {
-          setTimeout(() => {
-            this.repos = repos;
-            this.isUserLoading = false;
+  loadRepos(): void {
+    if (
+      this.isapiCallCached(this.username, this.currentPage, this.reposPerPage)
+    ) {
+      this.repos = this.getCachedApiCall(
+        this.username,
+        this.currentPage,
+        this.reposPerPage
+      );
+      this.isUserLoading = false;
+      this.isLoading = false;
+      return;
+    } else {
+      this.apiService
+        .getRepos(this.username, this.currentPage, this.reposPerPage)
+        .subscribe({
+          next: (repos: any) => {
+            setTimeout(() => {
+              this.repos = repos;
+              this.isUserLoading = false;
+              this.isLoading = false;
+            }, 400);
+          },
+          error: (error: any) => {
+            console.error(error);
             this.isLoading = false;
-          }, 400);
-        },
-        error: (error: any) => {
-          console.error(error);
-          this.isLoading = false;
-        },
-      });
+          },
+        });
+    }
   }
 
   onPageChange(page: number) {
