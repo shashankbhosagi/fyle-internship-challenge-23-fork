@@ -1,0 +1,27 @@
+<!-- <div class="shadow p-3 mb-5 card card-main-content" style="background-color: rgb(255 255 255 / 0%);width: 400px;min-height: 210px;; margin-left: 10px;backdrop-filter: blur(5px);">
+    <div class="card-body">
+      <h5 class="card-title">${truncatedTitle}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">${
+        repo.language
+          ? `<div class="language-circle">${repo.language}</div>`
+          : ""
+      }</h6>
+      <p class="card-text">${truncatedDescription}</p>
+      <a href="${
+        repo.html_url
+      }" class="card-link" target="_blank">View on GitHub</a>
+    </div>
+  </div> -->
+
+<div
+  class="mb-4 p-8 text text-white flex flex-col items-start justify-center border border-[#ffffff1a] min-h-[210px] w-[300px] rounded-lg space-y-2"
+>
+  <div>Trinity backend dev</div>
+  <div
+    class="border border-[#ffffff1a] bg-slate-600 rounded-full p-2 flex items-center justify-center w-28"
+  >
+    languageused
+  </div>
+  <div>Description of repository</div>
+  <a>Link to repo</a>
+</div>

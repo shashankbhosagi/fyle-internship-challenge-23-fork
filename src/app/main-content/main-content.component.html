@@ -1,59 +1,95 @@
+<!-- TO show repositories will assign a variable here ahe display none or block will be done -->
 <div
-  class="w-custom max-w-[800px] h-[52%] max-sm:h-[70%] flex flex-col z-50 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]"
+  class="w-custom max-w-[1100px] h-5/6 flex flex-col z-50 max-sm:h-full max-sm:mt-12 rounded-md backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]"
 >
   <div
-    class="flex-1 border-b-[0.00005rem] border-[#ffffff1a] bg-[#ffffff08] rounded-t-lg h-[11%] pl-3 pt-2 font-bold"
+    class="flex-1 border-b-[0.00005rem] border-[#ffffff1a] bg-[#ffffff08] rounded-t-lg h-[8%] max-sm:h-[4%] pl-3 pt-3 max-sm:pt-4 max-sm:pl-4 font-bold"
   >
-    <div class="text-lg text-sky-300">#Git-Repos</div>
+    <div class="text-lg text-sky-300 max-sm:text-2xl">#Git-Repos</div>
   </div>
-  <div class="flex flex-col space-y-14 h-[89%] p-7">
-    <div class="flex flex-col space-y-8">
-      <h1 class="text-5xl font-bold text-white">Welcome to Git-Repos</h1>
-      <div class="text-base text-gray-300">
-        Get a user's GitHub profile and their repositories on Git-Repos. <br />
-        Type your github username to get started !
+  <div class="flex flex-row h-[92%] max-sm:h-[96%] w-full max-sm:flex-col">
+    <div class="w-[35%] max-sm:h-[40%] max-sm:w-full max-sm:p-4 overflow-y">
+      <div class="h-full flex flex-col">
+        <div
+          class="searchcomponent w-full h-[40%] flex flex-col items-center justify-start space-y-8 pt-4"
+        >
+          <form
+            class="flex flex-col items-center space-y-4 w-full max-sm:flex-col max-sm:space-y-8"
+          >
+            <!-- for werror input class error-input -->
+            <div
+              class="w-full h-[80px] flex flex-col items-center justify-start space-y-1"
+            >
+              <input
+                class="bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[60px] w-[96%] text-white placeholder-gray-500 pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
+                name="title"
+                placeholder="Your GitHub Username (e.g. shashankbhosagi)"
+                value=""
+              />
+              <!-- <input
+                class="error-input bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[60px] w-[96%] text-white placeholder-gray-500 pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
+                name="title"
+                placeholder="Your GitHub Username (e.g. shashankbhosagi)"
+                value=""
+              />
+              
+              <div class="text-white font-bold">❌ Incorrect Username!</div> -->
+            </div>
+            <button
+              type="submit"
+              class="cursor-pointer h-[60px] bg-[#484a5b] pt-2 pb-2 border border-[#777a94] rounded-lg text-white w-[96%] text-lg font-bold max-sm:w-full max-sm:rounded-lg"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <div class="w-full h-[40%] flex flex-col items-center justify-start">
+          <app-user-info-card
+            class="w-[96%] max-sm:w-full h-2/3 border border-[#ffffff1a] flex flex-row justify-between content-center flex-wrap rounded-lg backdrop-filter backdrop-blur-2xl bg-opacity-10 bg-[#989898]"
+          ></app-user-info-card>
+        </div>
+
+        <div
+          class="gotohomepagebtn w-full h-[20%] flex flex-col items-center justify-start"
+        >
+          <a href="#" class="text-xl text-blue-500"> Go to Landing page > </a>
+        </div>
       </div>
     </div>
-    <div>
-      <form class="flex flex-row w-full max-sm:flex-col max-sm:space-y-4">
-        <!-- for werror input class error-input -->
-        <input
-          class="bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[56px] w-[78%] text-white placeholder-gray-500 rounded-tr-none rounded-br-none pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
-          name="title"
-          placeholder="Your GitHub Username (e.g. shashankbhosagi)"
-          value=""
-        />
-        <!-- <input
-        class="bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] focus:border-[#fff] flex items-center h-[56px] w-[80%] text-white rounded-tr-none rounded-br-none pl-4 font-bold text-lg"
-        name="title"
-        placeholder="Your GitHub Username (e.g. shashankbhosagi)"
-        value=""
-      /> -->
-        <button
-          type="submit"
-          class="cursor-pointer h-[56px] bg-[#484a5b] pt-3 pb-2 border border-[#777a94] rounded-lg rounded-tl-none rounded-bl-none text-white w-[22%] text-lg font-bold max-sm:w-full max-sm:rounded-lg"
-        >
-          Search
-        </button>
-      </form>
-      <!-- <div class="pt-4 text-white font-bold">❌ Incorrect Username!</div> -->
+    <div
+      class="border-[#ffffff1a] border-l max-sm:border-t max-sm:border-l-0 w-[65%] max-sm:h-[60%] max-sm:w-full"
+    >
+      <div
+        class="w-full h-full flex flex-row items-center justify-around flex-wrap mb-10 p-5 overflow-auto"
+      >
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+        <app-repo-card class=""></app-repo-card>
+
+        <!-- pagination  -->
+        <div class="flex flex-row content-start justify-between w-full">
+          <div class="flex justify-center items-center space-x-4">
+            <button class="bg-[#484a5b] text-white rounded-lg p-2">
+              Previous
+            </button>
+            <button class="bg-[#484a5b] text-white rounded-lg p-2">Next</button>
+          </div>
+          <div>
+            <!-- number of repos per page dropdown-->
+            <select
+              class="bg-[#484a5b] text-white rounded-lg p-2"
+              name="reposPerPage"
+              id="reposPerPage"
+            ></select>
+          </div>
+        </div>
+      </div>
+      <div></div>
     </div>
   </div>
 </div>
-
-<!-- TO show repositories will assign a variable here ahe display none or block will be done -->
-<!-- <div
-  class="w-custom max-w-[1200px] h-5/6 border border-white flex flex-col z-50 max-sm:h-full max-sm:mt-12 rounded-md"
->
-  <div class="flex border-b border-white h-[10%] max-sm:h-[50px]">
-    Content for the top box
-  </div>
-  <div class="flex flex-row h-[90%] w-full max-sm:flex-col">
-    <div class="border-r max-sm:border-b w-[70%] max-sm:h-1/4 max-sm:w-full">
-      Content for the left box
-    </div>
-    <div class="w-[30%] max-sm:h-3/4 max-sm:w-full max-sm:p-4 overflow-y-auto">
-      <div>Content for the left box</div>
-    </div>
-  </div>
-</div> -->

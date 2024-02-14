@@ -29,3 +29,11 @@
     border-color: #af062f;
     background: linear-gradient(102.95deg, rgba(239, 88, 124, .37) -.37%, rgba(129, 65, 135, .37) 104.38%);
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ffffff1a;
+}
