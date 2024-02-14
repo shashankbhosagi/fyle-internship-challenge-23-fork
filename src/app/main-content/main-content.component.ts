@@ -106,6 +106,11 @@ export class MainContentComponent {
               this.repos = repos;
               this.isUserLoading = false;
               this.isLoading = false;
+              this.setCacheApiCall(
+                this.username,
+                this.currentPage,
+                this.reposPerPage
+              );
             }, 400);
           },
           error: (error: any) => {
