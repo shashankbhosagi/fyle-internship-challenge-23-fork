@@ -58,7 +58,6 @@ export class MainContentComponent {
       .subscribe({
         next: (repos: any) => {
           setTimeout(() => {
-            console.log(repos);
             this.repos = repos;
             this.isUserLoading = false;
             this.isLoading = false;
@@ -94,10 +93,7 @@ export class MainContentComponent {
     }
     this.username = username;
     this.searchRepos();
-    // if (this.searchInitialSuccess === false) {
-    //   this.btnClicked = false;
-    //   return;
-    // }
+
     this.btnClicked = true;
   }
 
