@@ -1,95 +1,93 @@
-<!-- TO show repositories will assign a variable here ahe display none or block will be done -->
-<div
-  class="w-custom max-w-[1100px] h-5/6 flex flex-col z-50 max-sm:h-full max-sm:mt-12 rounded-md backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]"
->
+<app-landing-page *ngIf="!btnClicked" (usernameEntered)="handleUsername($event)" [userExist]="userExist"
+  [emptyUsername]="emptyUsername"
+  class="w-custom max-w-[800px] h-[52%] max-sm:h-[70%] flex flex-col z-50 rounded-lg backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]">
+  ></app-landing-page>
+<div *ngIf="btnClicked"
+  class="w-custom max-w-[1100px] h-5/6 flex flex-col z-50 max-sm:h-full max-sm:mt-12 rounded-md backdrop-filter backdrop-blur-lg bg-opacity-80 bg-[#181B28]">
+  <!--? *********************************** Top Title #Git-Repos *********************************** -->
   <div
-    class="flex-1 border-b-[0.00005rem] border-[#ffffff1a] bg-[#ffffff08] rounded-t-lg h-[8%] max-sm:h-[4%] pl-3 pt-3 max-sm:pt-4 max-sm:pl-4 font-bold"
-  >
+    class="flex-1 border-b-[0.00005rem] border-[#ffffff1a] bg-[#ffffff08] rounded-t-lg h-[8%] max-sm:h-[4%] pl-3 pt-3 max-sm:pt-4 max-sm:pl-4 font-bold">
     <div class="text-lg text-sky-300 max-sm:text-2xl">#Git-Repos</div>
   </div>
+  <!--? *********************************** Main Content *********************************** -->
   <div class="flex flex-row h-[92%] max-sm:h-[96%] w-full max-sm:flex-col">
+    <!--? *********************************** Left container *********************************** -->
     <div class="w-[35%] max-sm:h-[40%] max-sm:w-full max-sm:p-4 overflow-y">
       <div class="h-full flex flex-col">
-        <div
-          class="searchcomponent w-full h-[40%] flex flex-col items-center justify-start space-y-8 pt-4"
-        >
-          <form
-            class="flex flex-col items-center space-y-4 w-full max-sm:flex-col max-sm:space-y-8"
-          >
+        <!--? *********************************** Form container *********************************** -->
+        <div class="searchcomponent w-full h-[40%] flex flex-col items-center justify-start space-y-8 pt-4">
+          <!--? *********************************** The form *********************************** -->
+          <form class="flex flex-col items-center space-y-4 w-full max-sm:flex-col max-sm:space-y-8">
             <!-- for werror input class error-input -->
-            <div
-              class="w-full h-[80px] flex flex-col items-center justify-start space-y-1"
-            >
-              <input
+            <!--? *********************************** Input field  *********************************** -->
+            <div class="w-full h-[80px] flex flex-col items-center justify-start space-y-1">
+              <input *ngIf="userExist; else userNotFound"
                 class="bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[60px] w-[96%] text-white placeholder-gray-500 pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
-                name="title"
-                placeholder="Your GitHub Username (e.g. shashankbhosagi)"
-                value=""
-              />
-              <!-- <input
-                class="error-input bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[60px] w-[96%] text-white placeholder-gray-500 pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
-                name="title"
-                placeholder="Your GitHub Username (e.g. shashankbhosagi)"
-                value=""
-              />
-              
-              <div class="text-white font-bold">❌ Incorrect Username!</div> -->
+                name="username" [(ngModel)]="username" placeholder="Your GitHub Username (e.g. shashankbhosagi)"
+                required />
+              <ng-template #userNotFound>
+                <input
+                  class="error-input bg-[#ffffff1a] pt-4 pb-4 rounded-lg border border-[#ffffff1a] flex items-center h-[60px] w-[96%] text-white placeholder-gray-500 pl-4 font-bold text-lg focus:outline-none focus:border-[#ffffff95] max-sm:w-full max-sm:rounded-lg"
+                  name="username" [(ngModel)]="username" placeholder="Your GitHub Username (e.g. shashankbhosagi)"
+                  required />
+
+                <div class="text-white font-bold">
+                  ❌ Username doesn't exist
+                </div>
+              </ng-template>
             </div>
-            <button
-              type="submit"
-              class="cursor-pointer h-[60px] bg-[#484a5b] pt-2 pb-2 border border-[#777a94] rounded-lg text-white w-[96%] text-lg font-bold max-sm:w-full max-sm:rounded-lg"
-            >
+            <!--? *********************************** Search button  *********************************** -->
+
+            <button type="submit" (click)="searchRepos()"
+              class="cursor-pointer h-[60px] bg-[#484a5b] pt-2 pb-2 border border-[#777a94] rounded-lg text-white w-[96%] text-lg font-bold max-sm:w-full max-sm:rounded-lg transition duration-300 ease-in-out transform active:scale-95 active:bg-[#484a5b]">
               Search
             </button>
           </form>
         </div>
+        <!--? *********************************** User info card *********************************** -->
         <div class="w-full h-[40%] flex flex-col items-center justify-start">
-          <app-user-info-card
-            class="w-[96%] max-sm:w-full h-2/3 border border-[#ffffff1a] flex flex-row justify-between content-center flex-wrap rounded-lg backdrop-filter backdrop-blur-2xl bg-opacity-10 bg-[#989898]"
-          ></app-user-info-card>
+          <div *ngIf="isUserLoading; else userContent" class="w-full h-full ml-4">
+            <app-skeleton-loader-for-userinfo></app-skeleton-loader-for-userinfo>
+          </div>
+
+          <ng-template #userContent>
+            <app-user-info-card [userData]="userData" class="w-full h-full ml-4"></app-user-info-card>
+          </ng-template>
         </div>
 
-        <div
-          class="gotohomepagebtn w-full h-[20%] flex flex-col items-center justify-start"
-        >
-          <a href="#" class="text-xl text-blue-500"> Go to Landing page > </a>
+        <!--? *********************************** Go to homepage button *********************************** -->
+        <div class="gotohomepagebtn w-full h-[20%] flex flex-col items-center justify-start">
+          <a href="#" class="text-xl text-blue-500"></a>
         </div>
       </div>
     </div>
-    <div
-      class="border-[#ffffff1a] border-l max-sm:border-t max-sm:border-l-0 w-[65%] max-sm:h-[60%] max-sm:w-full"
-    >
-      <div
-        class="w-full h-full flex flex-row items-center justify-around flex-wrap mb-10 p-5 overflow-auto"
-      >
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
-        <app-repo-card class=""></app-repo-card>
+    <!--? *********************************** Right container *********************************** -->
+    <div class="border-[#ffffff1a] border-l max-sm:border-t max-sm:border-l-0 w-[65%] max-sm:h-[60%] max-sm:w-full">
+      <div *ngIf="isLoading; else reposContent" class="w-full h-full">
+        <app-skeleton-loader
+          class="w-full h-full flex flex-row items-start justify-around flex-wrap mb-10 p-5 overflow-auto"></app-skeleton-loader>
+      </div>
 
-        <!-- pagination  -->
-        <div class="flex flex-row content-start justify-between w-full">
-          <div class="flex justify-center items-center space-x-4">
-            <button class="bg-[#484a5b] text-white rounded-lg p-2">
-              Previous
-            </button>
-            <button class="bg-[#484a5b] text-white rounded-lg p-2">Next</button>
-          </div>
-          <div>
-            <!-- number of repos per page dropdown-->
-            <select
-              class="bg-[#484a5b] text-white rounded-lg p-2"
-              name="reposPerPage"
-              id="reposPerPage"
-            ></select>
+      <ng-template #reposContent>
+        <div *ngIf="repos.length > 0"
+          class="w-full h-full flex flex-row items-center justify-start flex-wrap mb-10 p-5 overflow-auto">
+          <app-repo-card *ngFor="let repo of repos" [repo]="repo"></app-repo-card>
+          <!--? *********************************** Pagination *********************************** -->
+          <div class="flex flex-row content-start justify-between w-full">
+            <app-pagination [currentPage]="currentPage" [itemsPerPage]="reposPerPage" [totalItems]="totalRepo"
+              (pageChange)="onPageChange($event)"></app-pagination>
+            <div>
+              <!--? Repos per page drop down  -->
+              <select class="bg-[#484a5b] text-white rounded-lg p-2" name="reposPerPage" id="reposPerPage"
+                [(ngModel)]="reposPerPage" (ngModelChange)="onReposPerPageChange($event)">
+                <option *ngFor="let option of reposPerPageOptions" [value]="option">
+                  {{ option }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div></div>
+      </ng-template>
     </div>
   </div>
 </div>

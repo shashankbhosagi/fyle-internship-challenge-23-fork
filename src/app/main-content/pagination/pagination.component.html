@@ -1,0 +1,19 @@
+<div class="flex justify-center items-center space-x-4">
+  <button
+    class="bg-[#484a5b] text-white rounded-lg p-2"
+    (click)="currentPage !== 1 && changePage(currentPage - 1)"
+    [disabled]="currentPage === 1"
+  >
+    Previous
+  </button>
+  <span class="bg-[#484a5b] text-white rounded-lg p-2"
+    >{{ currentPage }} / {{ totalPages }}</span
+  >
+  <button
+    class="bg-[#484a5b] text-white rounded-lg p-2"
+    (click)="currentPage !== totalPages && changePage(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+</div>
