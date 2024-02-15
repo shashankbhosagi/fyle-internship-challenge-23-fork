@@ -12,8 +12,6 @@ export class PaginationComponent implements OnInit {
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
   ngOnInit(): void {
-    // Perform initialization logic here if needed
-    // For example, you might want to ensure currentPage is within bounds
     if (this.currentPage < 1) {
       this.currentPage = 1;
     }

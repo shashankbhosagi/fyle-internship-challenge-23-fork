@@ -14,7 +14,17 @@ import { SkeletonLoaderForUserinfoComponent } from './main-content/skeleton-load
 import { LandingPageComponent } from './main-content/landing-page/landing-page.component';
 
 @NgModule({
-  declarations: [AppComponent, BackgroundComponent, MainContentComponent, UserInfoCardComponent, RepoCardComponent, PaginationComponent, SkeletonLoaderComponent, SkeletonLoaderForUserinfoComponent, LandingPageComponent],
+  declarations: [
+    AppComponent,
+    BackgroundComponent,
+    MainContentComponent,
+    UserInfoCardComponent,
+    RepoCardComponent,
+    PaginationComponent,
+    SkeletonLoaderComponent,
+    SkeletonLoaderForUserinfoComponent,
+    LandingPageComponent,
+  ],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
